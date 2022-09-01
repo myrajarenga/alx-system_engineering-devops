@@ -1,3 +1,3 @@
  #!/bin/bash
-  pwd
+  pwd 0-current _working _diectory
 
