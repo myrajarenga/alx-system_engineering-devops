@@ -1,0 +1,2 @@
+#!/bin/bash
+ mv -u tmp/betty -T tmp/my_first_directory
