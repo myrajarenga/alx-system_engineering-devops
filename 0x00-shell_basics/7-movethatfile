@@ -1,2 +1,4 @@
 #!/bin/bash
- mv -u tmp/betty -T tmp/my_first_directory
+read -p"Enter source  file path" tmp
+read -p"Entre destination directory path" my_first_directory
+mv betty $tmp$my_first_directory
