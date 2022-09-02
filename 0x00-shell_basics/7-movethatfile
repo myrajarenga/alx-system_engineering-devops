@@ -1,4 +1,2 @@
 #!/bin/bash
-read -p"Enter source  file path" tmp
-read -p"Entre destination directory path" my_first_directory
-mv betty $tmp$my_first_directory
+mv -t  betty my_first_directory
