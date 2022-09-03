@@ -1,2 +1,2 @@
-#!/bin/bash
-su who am I
+ #!/bin/bash
+ echo "who am i"
