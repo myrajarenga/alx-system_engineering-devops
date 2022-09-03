@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo Who am I
+sudo -i
