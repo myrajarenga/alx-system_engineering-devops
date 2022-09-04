@@ -1,2 +1,2 @@
- #!/bin/bash
- echo "who am i"
+#!/bin/bash
+whoami 
