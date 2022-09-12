@@ -1,2 +1,2 @@
-#1/bin/bash
+#!/bin/bash
 printf "%x.2\n" $NUM
