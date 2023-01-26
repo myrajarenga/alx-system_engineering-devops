@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#print Best school 10 times
+i=10
+until [ "$i" -eq 1 ]
+do
+	echo "Best school"
+	((i--))
+done
