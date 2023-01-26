@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#using cut command to list files
+i=$(ls)
+for j in $i
+do
+	echo "$j" | cut  -d "-"  -f 2
+done
