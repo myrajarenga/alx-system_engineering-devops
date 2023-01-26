@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # script that prints information  about afile
+
 if [ -e "school" ]
 then
 	echo "school file exist"
