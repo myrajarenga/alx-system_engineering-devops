@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#script to kill aprocess
+pid=$(pgrep -f ./7-highlander)
+kill -SIGKILL "$pid"
