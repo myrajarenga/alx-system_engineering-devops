@@ -6,12 +6,13 @@
 echo $$ > /var/run/myscript.pid
 trap "echo I hate the kill command" SIGTERM
 trap "echo Y U no live me?!" SIGINT
-trap "rm -f/var/run/myscript.pid" SIGQUIT
+trap "rm -f/var/run/myscript.pid; exit" SIGQUIT
 SIGTERM
 
 while ((1))
 do
 	echo "To infinity and beyound"
-	sleep 1
+	sleep 2
+
 done
 
