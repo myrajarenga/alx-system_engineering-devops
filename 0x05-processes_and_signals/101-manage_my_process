@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#start manage_my_process
+#stop manage_my_process
+#restart manage_my-process
+case "$1" in
+	start)
+		nohup ./manage_my_process &
+		echo $! > /var/run/my_process.pid
+		;;
+	stop)
+		pid=$(cat /var/run/my_process.pid)
+		kill -9 $pid
+		rm -f /var/run/my_process.pid
+		echo "manage_my_process stopped"
+		;;
+	restart)
+  		pid=$(cat /var/run/my_process.pid)
+        	kill -9 $pid
+        	rm -f /var/run/my_process.pid
+        	nohup ./manage_my_process &
+        	echo $! > /var/run/my_process.pid
+        	echo "manage_my_process restarted"
+        	;;
+    	*)
+        	echo "Usage: 101-manage_my_process {start|stop|restart}"
+		exit 1
+esac
