@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#script that diaplays all active IPv4 IPs on machine its executed on
+
 ip_addresses=$(hostname -I)
 ip_addresses=(${ip_addresses// " "})
 
