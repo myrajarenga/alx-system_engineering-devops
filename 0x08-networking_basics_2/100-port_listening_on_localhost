@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#script that listens on aport(98) on localhost
+
+nc -l -p 98 | script
