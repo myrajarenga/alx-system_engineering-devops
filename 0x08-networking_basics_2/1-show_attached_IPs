@@ -6,5 +6,5 @@ ip_addresses=(${ip_addresses// " "})
 
 for ip in "${ip_addresses[@]}";
 do
-	printf "$ip\n"
+	echo "$ip"
 done
