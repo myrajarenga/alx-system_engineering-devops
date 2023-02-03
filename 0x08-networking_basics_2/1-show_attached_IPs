@@ -2,8 +2,7 @@
 #script that diaplays all active IPv4 IPs on machine its executed on
 
 #get list of all network ip adresses
-ip_addresses=$(hostname -I)
-ip_addresses=($ifconfig -a | awk '/inet / {prin $2'})
+ip_addresses=$(ifconfig -a | awk '/inet / {print $2}')
 #loop through each ip and display IP addresse
 for ip in $ip_addresses
 do
