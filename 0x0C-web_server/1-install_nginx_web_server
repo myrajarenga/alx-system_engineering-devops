@@ -1,22 +1,8 @@
 #!/usr/bin/env bash
 
-# Install Nginx
-sudo apt-get update
-sudo apt-get install -y nginx
+# Install nginx on web server; Nginx should be listening on port 80
 
-# Configure Nginx to listen on port 80
-sudo sed -i 's/listen\ \[::\]:80/listen\ 80/' /etc/nginx/sites-available/default
-
-# Create a test HTML file with "Hello World!"
-sudo bash -c "echo  'Hello World!' > /var/www/html/index.html"
-
-# Restart Nginx
-sudo kill -HUP $(pgrep nginx)
-
-# Verify that Nginx is running and returning the correct response
-response=$(curl -s http://localhost)
-if [[ $response == *"Hello World!"* ]]; then
-  echo "Nginx is installed and configured correctly"
-else
-  echo "Error: Nginx is not returning the correct response"
-fi
+sudo apt-get -y update
+sudo apt-get -y install nginx
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo service nginx start
