@@ -3,11 +3,10 @@
 # Check if Nginx is running
 if ! pgrep nginx > /dev/null ; then
   # Start Nginx
-  sudo systemctl start nginx
+  sudo /etc/init.d/nginx start
 fi
-
 # Check if Nginx is listening on port 80
 if ! sudo netstat -tlnp | grep ':80 .*nginx' > /dev/null ; then
   # Restart Nginx
-  sudo systemctl restart nginx
+  sudo /etc/init.d/nginx restart
 fi
