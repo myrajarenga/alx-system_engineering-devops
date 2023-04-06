@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#making it short and sweet
+sudo systemctl stop nginx
+sudo systemctl status nginx | grep 'Active: inactive'
