@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
+#check ngix confg files to find out ifbthe fileshave tye same configutrations
+#if not rm default file in the enabled configuration 
+#creat asymbolkc link to connect config files 
 
-# Check if Nginx is running
-if ! pgrep nginx > /dev/null ; then
-  # Start Nginx
-  sudo /etc/init.d/nginx start
-fi
-# Check if Nginx is listening on port 80
-if ! sudo netstat -tlnp | grep ':80 .*nginx' > /dev/null ; then
-  # Restart Nginx
-  sudo /etc/init.d/nginx restart
-fi
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
