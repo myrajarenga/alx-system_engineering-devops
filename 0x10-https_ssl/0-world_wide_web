@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#Define an array of subdomains to check
+subdomains=("www" "lb-01" "web-01" "web-02")
+
+# Loop through the subdomains and display the DNS records
+for subdomain in "${subdomains[@]}"; do
+    dig_domain() {
+        string=$(dig "$subdomain"."$1" | grep -A1 'ANSWER SECTION:' | tail -1)
+        echo "$subdomain $string" | awk '{print "The subdomain " $1 " is a " $5 " record and points to " $6}'
+    }
+    if [ "$#" == 1 ]; then
+        dig_domain "$1"
+    elif [ "$#" == 2 ]; then
+        dig_domain "$1" "$2"
+    fi
+done
