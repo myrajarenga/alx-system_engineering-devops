@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#ure that the script is run as root
+# Stop nginx if it is already running
+sudo service nginx stop
+sudo pkill apache2
+# Set nginx to run as the nginx user
+sed -i 's/user www-data/user nginx/g' /etc/nginx/nginx.conf
+
+# Configure nginx to listen on all active IPs on port 8080
+sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
+sudo nginx -t
+# Start nginx and ensure it is set to start on boot
+sudo service nginx start
+sudo service nginx enable
+
