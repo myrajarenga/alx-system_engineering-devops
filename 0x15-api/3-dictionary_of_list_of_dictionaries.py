@@ -1,6 +1,22 @@
 #!/usr/bin/python3
-"""Script to fetch todos of all employees from an\
-API and export to JSON format"""
+"""script to fetch todos of all employees from an \
+API and export to JSON format.
+The script fetches todos of all users from the JSONPlaceholder\
+ API and exports
+them to a JSON file in the formatooou
+ER_ID": [
+        {
+            "username": "USERNAME",
+            "task": "TASK_TITLE",
+            "completed": TASK_COMPLETED_STATUS
+        },
+        ...
+    ],
+    ...
+}
+
+ON file is saved with the name "todo_all_employees.json".
+"""
 import json
 import requests
 
