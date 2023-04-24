@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 This script retrieves a user's to-do list from the\
- JSONPlaceholder API and writes it to a CSV file.
-
+ JSONPlaceholder API and writes it to a CSV file
 Usage: python3 todo_to_csv.py [user_id]
 """
 import csv
@@ -31,3 +30,6 @@ def export_csv():
                         todo.get("completed"),
                         todo.get("title")
                     ])
+
+if __name__ == "__main__":
+    export_csv()
