@@ -1,35 +1,48 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+"""Fetch JSON data from an API and export to CSV file.
+
+Usage: python3 export_to_csv.py <user_id>
 """
-This script retrieves a user's to-do list from the\
- JSONPlaceholder API and writes it to a CSV file
-Usage: python3 todo_to_csv.py [user_id]
-"""
+
 import csv
 import requests
+from sys import argv
 
 
-def export_csv():
+def export_to_csv():
     """
-    Export todo list data for all users to a CSV file.
+    Fetches the todo list data for a given user ID and exports it to a CSV file.
     """
-    users = requests.get("https://jsonplaceholder.typicode.com/users").json()
-    todos = requests.get("https://jsonplaceholder.typicode.com/todos").json()
 
-    with open("todo_all_employees.csv", "w") as csvfile:
+    # Parse user ID from command line argument
+    user_id = argv[1]
+
+    # Fetch user data from API
+    user_url = "https://jsonplaceholder.typicode.com/users/" + user_id
+    user_data = requests.get(user_url).json()
+
+    # Extract username from user data
+    username = user_data.get("username")
+
+    # Fetch todo list data for user from API
+    todo_url = "{}/todos".format(user_url)
+    todo_data = requests.get(todo_url).json()
+
+    # Define output file name
+    file_name = "{}.csv".format(user_id)
+
+    # Export todo list data to CSV file
+    with open(file_name, 'w') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
 
-        for user in users:
-            userId = user.get("id")
-            userName = user.get("username")
+        for item in todo_data:
+            writer.writerow([
+                item.get("userId"),
+                username,
+                item.get("completed"),
+                item.get("title")
+            ])
 
-            for todo in todos:
-                if userId == todo.get("userId"):
-                    writer.writerow([
-                        userId,
-                        userName,
-                        todo.get("completed"),
-                        todo.get("title")
-                    ])
 
-if __name__ == "__main__":
-    export_csv()
+if __name__ == '__main__':
+    export_to_csv()
