@@ -11,7 +11,8 @@ from sys import argv
 
 def export_to_csv():
     """
-    Fetches the todo list data for a given user ID and exports it to a CSV file.
+    Fetches the todo list data for a given user ID \
+    and exports it to a CSV file.
     """
 
     # Parse user ID from command line argument
