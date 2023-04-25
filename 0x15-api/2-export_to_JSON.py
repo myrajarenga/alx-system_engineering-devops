@@ -1,45 +1,45 @@
 #!/usr/bin/python3
-""" Fetch data from API and converts it into   a dictionary"""
+""" Fetch JSON data from an API and converts it to a dictionary"""
+
 import json
 import requests
-import sys
 
 if __name__ == "__main__":
-    # Check if the user ID is provided as input
-    if len(sys.argv) < 2:
-        print("Please provide a user ID as input parameter.")
-        sys.exit(1)
+    # URL of the API endpoint
+    api_url = "https://jsonplaceholder.typicode.com/users"
 
-    # Get the user ID from the input parameter
-    user_id = sys.argv[1]
+    # List of user IDs to fetch tasks for
+    user_ids = ["1", "2", "3"]
 
-    # URL of the API endpoint for the specified user
-    api_url = "https://jsonplaceholder.typicode.com/users/{}/todos"\
-    .format(user_id)
+    # Loop through each user ID in the list
+    for user_id in user_ids:
+        # Get the tasks for the current user
+        user_tasks_url = f"{api_url}/{user_id}/todos"
+        user_tasks = requests.get(user_tasks_url).json()
 
-    # Get data in JSON format from the API
-    todos = requests.get(api_url).json()
+        # Initialize an empty list to store the tasks for this user
+        user_task_list = []
 
-    # Initialize an empty list to store the tasks data for the current user
-    tasks_list = []
+        # Loop through each task for this user
+        for task in user_tasks:
+            task_title = task.get("title")
+            task_completed = task.get("completed")
 
-    # Loop through each task item for the current user
-    for task in todos:
-        # Extract the title and completed status for the task item
-        task_title = task.get("title")
-        task_completed = task.get("completed")
+            # Create a dictionary to represent the task for this user
+            task_dict = {
+                "user_id": user_id,
+                "task": task_title,
+                "completed": task_completed
+            }
 
-        # Create a dictionary to store the task item data
-        task_dict = {
-            "user_id": user_id,
-            "task": task_title,
-            "completed": task_completed
+            # Add the task dictionary to the list of tasks for this user
+            user_task_list.append(task_dict)
+
+        # Create a dictionary to represent the tasks for this user
+        user_dict = {
+            user_id: user_task_list
         }
 
-        # Add the task item data to the tasks list for the current user
-        tasks_list.append(task_dict)
-
-    # Write the tasks data for the current user to a JSON file
-    output_file = "{}.json".format(user_id)
-    with open(output_file, 'w') as f:
-        json.dump(tasks_list, f)
+        # Write the user's tasks to a JSON file
+        with open(f"{user_id}.json", "w") as f:
+            json.dump(user_dict, f)
