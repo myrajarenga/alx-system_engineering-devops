@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Fetch JSON data from an API and converts it to a dictionary"""
+""" convert data in JSON format from an API and converts it to a dictionary"""
 
 import json
 import requests
