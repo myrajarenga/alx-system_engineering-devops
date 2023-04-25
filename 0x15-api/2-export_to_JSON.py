@@ -1,55 +1,45 @@
 #!/usr/bin/python3
-""" Fetch JSON data from an API and converts it to a dictionary"""
-
+""" Fetch data from API and converts it into   a dictionary"""
 import json
 import requests
-
+import sys
 
 if __name__ == "__main__":
-    # URL of the API endpoint
-    api_url = "https://jsonplaceholder.typicode.com/users/"
+    # Check if the user ID is provided as input
+    if len(sys.argv) < 2:
+        print("Please provide a user ID as input parameter.")
+        sys.exit(1)
+
+    # Get the user ID from the input parameter
+    user_id = sys.argv[1]
+
+    # URL of the API endpoint for the specified user
+    api_url = "https://jsonplaceholder.typicode.com/users/{}/todos"\
+    .format(user_id)
 
     # Get data in JSON format from the API
-    users = requests.get(api_url).json()
+    todos = requests.get(api_url).json()
 
-    # Name of the output file
-    output_file = "2.json"
+    # Initialize an empty list to store the tasks data for the current user
+    tasks_list = []
 
-    # Initialize an empty dictionary to store the data
-    user_data_dict = {}
+    # Loop through each task item for the current user
+    for task in todos:
+        # Extract the title and completed status for the task item
+        task_title = task.get("title")
+        task_completed = task.get("completed")
 
-    # Loop through each user in the API data
-    for user in users:
-        # Extract the username and user ID
-        username = user.get("username")
-        user_id = str(user.get("id"))
+        # Create a dictionary to store the task item data
+        task_dict = {
+            "user_id": user_id,
+            "task": task_title,
+            "completed": task_completed
+        }
 
-        # Get the todos data for the current user
-        todos_url = "{}{}/todos".format(api_url, user_id)
-        user_todos = requests.get(todos_url).json()
+        # Add the task item data to the tasks list for the current user
+        tasks_list.append(task_dict)
 
-        # Initialize an empty list to store the todos data for the current user
-        todos_list = []
-
-        # Loop through each todo item for the current user
-        for todo in user_todos:
-            # Extract the title and completed status for the todo item
-            todo_title = todo.get("title")
-            todo_completed = todo.get("completed")
-
-            # Create a dictionary to store the todo item data
-            todo_dict = {
-                "username": username,
-                "task": todo_title,
-                "completed": todo_completed
-            }
-
-            # Add the todo item data to the todos list for the current user
-            todos_list.append(todo_dict)
-
-        # Add the todos data for the current user to the user data dictionary
-        user_data_dict[user_id] = todos_list
-
-    # Write the user data dictionary to a JSON file
+    # Write the tasks data for the current user to a JSON file
+    output_file = "{}.json".format(user_id)
     with open(output_file, 'w') as f:
-        json.dump(user_data_dict, f)
+        json.dump(tasks_list, f)
