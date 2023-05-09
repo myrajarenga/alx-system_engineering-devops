@@ -11,18 +11,19 @@ def recurse(subreddit, hot_list=[], after=None):
     params = {'after': after} if after else None
     response = requests.get(url, headers=headers, params=params)
 
-    if response.status_code == 200:
-        data = response.json().get('data')
-        if data:
-            children = data.get('children')
-            for child in children:
-                hot_list.append(child.get('data').get('title'))
-            after = data.get('after')
-            if after:
-                recurse(subreddit, hot_list, after)
-            else:
-                return hot_list
-        else:
-            return hot_list
-    else:
+    # check for errors
+    if response.status_code != 200:
         return None
+
+    # process response data
+    data = response.json()
+    children = data.get("data").get("children")
+    for child in children:
+        hot_list.append(child.get("data").get("title"))
+
+    # check if there are more pages
+    after = data.get("data").get("after")
+    if after is not None:
+        recurse(subreddit, hot_list, after)
+
+    return hot_list
