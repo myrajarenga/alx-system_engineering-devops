@@ -14,8 +14,8 @@ frontend http-in
         default_backend servers
 backend servers
         balance roundrobin
-        server web-01 34.224.94.210:80 check
-        server web-02 54.87.252.193:80 check
+        server 84438-web-01 54.236.44.93 check
+        server 84438-web-02 100.26.122.135 check
 EOT
 # start HAProxy
 sudo /etc/init.d/haproxy start
