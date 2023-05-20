@@ -1,12 +1,12 @@
-#alx-system_engineering-devops
+##alx-system_engineering-devops
 
-Application server
+##Application server
 
 tasks
-0. Set up development with Python
+## 0. Set up development with Python
 Let’s serve what you built for AirBnB clone v2 - Web framework on web-01. This task is an exercise in setting up your development environment, which is used for testing and debugging your code before deploying it to production.
 
-Requirements:
+##Requirements:
 
 Make sure that task #3 of your SSH project is completed for web-01. The checker will connect to your servers.
 Git clone your AirBnB_clone_v2 on your web-01 server.
@@ -26,10 +26,10 @@ ubuntu@229-web-01:~/AirBnB_clone_v2$ python3 -m web_flask.0-hello_route
 window 2:
 ubuntu@229-web-01:~/AirBnB_clone_v2$ curl 127.0.0.1:5000/airbnb-onepage/
 Hello HBNB!ubuntu@229-web-01:~/AirBnB_clone_v2$
-1. Set up production with Gunicorn
+## 1. Set up production with Gunicorn
 Now that you have your development environment set up, let’s get your production application server set up with Gunicorn on web-01, port 5000. You’ll need to install Gunicorn and any libraries required by your application. Your Flask application object will serve as a WSGI entry point into your application. This will be your production environment. As you can see we want the production and development of your application to use the same port, so the conditions for serving your dynamic content are the same in both environments.
 
-Requirements:
+##Requirements:
 
 Install Gunicorn and any other libraries required by your application.
 The Flask application object should be called app. (This will allow us to run and check your code)
@@ -47,10 +47,10 @@ Terminal 2:
 ubuntu@229-web-01:~$ curl 127.0.0.1:5000/airbnb-onepage/
 Hello HBNB!ubuntu@229-web-01:~$
 
-3.Serve a page with Nginx
+##3.Serve a page with Nginx
 Building on your work in the previous tasks, configure Nginx to serve your page from the route /airbnb-onepage/
 
-Requirements:
+##Requirements:
 
 Nginx must serve this page both locally and on its public IP on port 80.
 Nginx should proxy requests to the process listening on port 5000.
@@ -84,10 +84,10 @@ X-Served-By: 229-web-01
 vagrant@ubuntu-xenial:~$ curl 35.231.193.217/airbnb-onepage/
 Hello HBNB!vagrant@ubuntu-xenial:~$
 
-3.Add a route with query parameters
+## 3. Add a route with query parameters
 Building on what you did in the previous tasks, let’s expand our web application by adding another service for Gunicorn to handle. In AirBnB_clone_v2/web_flask/6-number_odd_or_even, the route /number_odd_or_even/<int:n> should already be defined to render a page telling you whether an integer is odd or even. You’ll need to configure Nginx to proxy HTTP requests to the route /airbnb-dynamic/number_odd_or_even/(any integer) to a Gunicorn instance listening on port 5001. The key to this exercise is getting Nginx configured to proxy requests to processes listening on two different ports. You are not expected to keep your application server processes running. If you want to know how to run multiple instances of Gunicorn without having multiple terminals open, see tips below.
 
-Requirements:
+##Requirements:
 
 Nginx must serve this page both locally and on its public IP on port 80.
 Nginx should proxy requests to the route /airbnb-dynamic/number_odd_or_even/(any integer) the process listening on port 5001.
@@ -140,10 +140,10 @@ vagrant@ubuntu-xenial:~$ curl 35.231.193.217/airbnb-dynamic/number_odd_or_even/6
   <BODY><H1>Number: 6 is even</H1></BODY>
 </HTML>vagrant@ubuntu-xenial:~$
 
-4. Let's do this for your API
+## 4. Let's do this for your API
 Let’s serve what you built for AirBnB clone v3 - RESTful API on web-01.
 
-Requirements:
+##Requirements:
 
 Git clone your AirBnB_clone_v3
 Setup Nginx so that the route /api/ points to a Gunicorn instance listening on port 5002
@@ -166,10 +166,10 @@ vagrant@ubuntu-xenial:~$ curl 35.231.193.217/api/v1/states
 [{"__class__":"State","created_at":"2019-05-10T00:39:27.032802","id":"7512f664-4951-4231-8de9-b18d940cc912","name":"California","updated_at":"2019-05-10T00:39:27.032965"},{"__class__":"State","created_at":"2019-05-10T00:39:36.021219","id":"b25625c8-8a7a-4c1f-8afc-257bf9f76bc8","name":"Arizona","updated_at":"2019-05-10T00:39:36.021281"}]
 vagrant@ubuntu-xenial:~$
 
-5. Serve your AirBnB clone
+## 5. Serve your AirBnB clone
 Let’s serve what you built for AirBnB clone - Web dynamic on web-01.
 
-Requirements:
+##Requirements:
 
 Git clone your AirBnB_clone_v4
 Your Gunicorn instance should serve content from web_dynamic/2-hbnb.py on port 5003
