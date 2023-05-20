@@ -1,10 +1,12 @@
+#alx-system_engineering-devops
+## Writing postmorterm report
 
 Tasks
-0. My first postmortem
+## 0. My first postmortem
 Using one of the web stack debugging project issue or an outage you have personally face, write a postmortem. Most of
 you will never have faced an outage, so just get creative and invent your own :)
 
-Requirements:
+##Requirements:
 
 Issue Summary (that is often what executives will read) must contain:
 duration of the outage with start and end times (including timezone)
@@ -31,4 +33,8 @@ Be brief and straight to the point, between 400 to 600 words
 
 While postmortem format can vary, stick to this one so that you can get properly reviewed by your peers.
 
-Please, remember that these blogs must be written in English to further your technical ability in a variety of settings.
+Please, remember that these blogs must be written in English to further your technical ability in a variety of settings
+
+## solution.
+in the google drive link bello  showcase how i would write aposterm report as an SRE engineer 
+https://docs.google.com/document/d/1dcftnX9bQXvytNufrCiu0qEtUmof1tVzqTetb0zMkvo/edit?usp=drivesdk
