@@ -36,5 +36,5 @@ While postmortem format can vary, stick to this one so that you can get properly
 Please, remember that these blogs must be written in English to further your technical ability in a variety of settings
 
 ## solution.
-in the google drive link bello  showcase how i would write aposterm report as an SRE engineer 
+In the google drive link bellow  showcase how I would write aposterm report as an SRE engineer ay bluehost
 https://docs.google.com/document/d/1dcftnX9bQXvytNufrCiu0qEtUmof1tVzqTetb0zMkvo/edit?usp=drivesdk
