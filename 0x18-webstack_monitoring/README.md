@@ -15,13 +15,13 @@ Your server web-01 should be visible in Datadog under the host name XX-web-01
 You can validate it by using this API
 If needed, you will need to update the hostname of your server
 
-## 1. Monitor sone metrix
+## 1. Monitor some metrix
 Among the litany of data your monitoring service can report to you are system metrics. You can use these metrics to determine statistics such as reads/writes per second, which can help your company determine if/how they should scale. Set up some monitors within the Datadog dashboard to monitor and alert you of a few. You can read about the various system metrics that you can monitor here: System Check.
 
 Set up a monitor that checks the number of read requests issued to the device per second.
 Set up a monitor that checks the number of write requests issued to the device per second
 
-## 2. creatr a dashboard
+## 2. create a dashboard
 Now create a dashboard with different metrics displayed in order to get a few different visualizations.
 
 Create a new dashboard
